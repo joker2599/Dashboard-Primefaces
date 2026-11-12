@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.demo</groupId>
+        <artifactId>primefaces-charts-dashboard</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>primefaces-charts-dashboard-web</artifactId>
+    <packaging>war</packaging>
+    <name>PrimeFaces Charts Dashboard Web</name>
+    <description>Capa web JSF / Faces con PrimeFaces 14 y dashboard de gráficas</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+        </dependency>
+
+        <!-- EJB disponible en el EAR; provided en el WAR empaquetado -->
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>primefaces-charts-dashboard-ejb</artifactId>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <classifier>jakarta</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>software.xdev</groupId>
+            <artifactId>chartjs-java-model</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>primefaces-charts-dashboard-web</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

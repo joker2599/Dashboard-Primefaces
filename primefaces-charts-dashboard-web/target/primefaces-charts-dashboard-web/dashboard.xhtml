@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Dashboard de gráficas · Para Alvaro</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <h:outputStylesheet library="css" name="dashboard.css"/>
+    </h:head>
+    <h:body>
+        <h:form id="frmDashboard">
+            <p:growl id="growl" showDetail="true" life="3500"/>
+
+            <div class="dash-shell">
+                <header class="dash-header">
+                    <h1>Dashboard de gráficas para Alvaro</h1>
+                    <p>
+                        Toma
+                    </p>
+                </header>
+
+                <div class="dash-grid">
+                    <section class="dash-card dash-card--span-4">
+                        <h2 class="dash-card__title">Doughnut</h2>
+                        <p class="dash-card__subtitle">
+                            Segmentos Red / Blue / Yellow (referencia Showcase)
+                        </p>
+                        <p:chart id="doughnutChart"
+                                 value="#{chartDashboardBean.doughnutModel}"
+                                 styleClass="dash-chart"
+                                 ariaLabel="Gráfica doughnut Red Blue Yellow">
+                            <p:ajax event="itemSelect"
+                                    listener="#{chartDashboardBean.itemSelect}"
+                                    update="growl"/>
+                        </p:chart>
+                    </section>
+
+                    <section class="dash-card dash-card--span-4">
+                        <h2 class="dash-card__title">Pie</h2>
+                        <p class="dash-card__subtitle">Participación por región</p>
+                        <p:chart id="pieChart"
+                                 value="#{chartDashboardBean.pieModel}"
+                                 styleClass="dash-chart"
+                                 ariaLabel="Gráfica de pastel por región">
+                            <p:ajax event="itemSelect"
+                                    listener="#{chartDashboardBean.itemSelect}"
+                                    update="growl"/>
+                        </p:chart>
+                    </section>
+
+                    <section class="dash-card dash-card--span-4">
+                        <h2 class="dash-card__title">Barras</h2>
+                        <p class="dash-card__subtitle">Comparativa mensual de ventas</p>
+                        <p:chart id="barChart"
+                                 value="#{chartDashboardBean.barModel}"
+                                 styleClass="dash-chart"
+                                 ariaLabel="Gráfica de barras de ventas">
+                            <p:ajax event="itemSelect"
+                                    listener="#{chartDashboardBean.itemSelect}"
+                                    update="growl"/>
+                        </p:chart>
+                    </section>
+
+                    <section class="dash-card dash-card--span-6">
+                        <h2 class="dash-card__title">Líneas</h2>
+                        <p class="dash-card__subtitle">Tendencia de usuarios y sesiones</p>
+                        <p:chart id="lineChart"
+                                 value="#{chartDashboardBean.lineModel}"
+                                 styleClass="dash-chart dash-chart--tall"
+                                 ariaLabel="Gráfica de líneas de actividad">
+                            <p:ajax event="itemSelect"
+                                    listener="#{chartDashboardBean.itemSelect}"
+                                    update="growl"/>
+                        </p:chart>
+                    </section>
+
+                    <section class="dash-card dash-card--span-6">
+                        <h2 class="dash-card__title">Mixta</h2>
+                        <p class="dash-card__subtitle">Barras (pedidos) + línea (meta)</p>
+                        <p:chart id="mixedChart"
+                                 value="#{chartDashboardBean.mixedModel}"
+                                 styleClass="dash-chart dash-chart--tall"
+                                 ariaLabel="Gráfica mixta pedidos versus meta">
+                            <p:ajax event="itemSelect"
+                                    listener="#{chartDashboardBean.itemSelect}"
+                                    update="growl"/>
+                        </p:chart>
+                    </section>
+                </div>
+
+                <footer class="dash-footer">
+                    Datos desde EJB ChartDataService 
+                </footer>
+            </div>
+        </h:form>
+    </h:body>
+</html>

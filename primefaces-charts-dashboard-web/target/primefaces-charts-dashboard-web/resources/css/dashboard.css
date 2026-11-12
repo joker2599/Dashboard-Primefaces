@@ -1,0 +1,102 @@
+:root {
+    --dash-bg: #0f1419;
+    --dash-surface: #1a1f27;
+    --dash-card: #222831;
+    --dash-border: #2e3642;
+    --dash-text: #e8edf2;
+    --dash-muted: #9aa7b5;
+    --dash-accent: #5dade2;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(145deg, #1a1030 0%, #0f1419 45%, #0d2a2a 100%);
+    background-attachment: fixed;
+    color: var(--dash-text);
+    min-height: 100%;
+}
+
+.dash-shell {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 3rem;
+}
+
+.dash-header {
+    margin-bottom: 1.75rem;
+}
+
+.dash-header h1 {
+    margin: 0 0 0.35rem;
+    font-size: 1.85rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.dash-header p {
+    margin: 0;
+    color: var(--dash-muted);
+    font-size: 0.95rem;
+}
+
+.dash-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.25rem;
+}
+
+.dash-card {
+    background: var(--dash-card);
+    border: 1px solid var(--dash-border);
+    border-radius: 10px;
+    padding: 1rem 1rem 0.75rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.dash-card--span-4 {
+    grid-column: span 4;
+}
+
+.dash-card--span-6 {
+    grid-column: span 6;
+}
+
+.dash-card--span-12 {
+    grid-column: span 12;
+}
+
+.dash-card__title {
+    margin: 0 0 0.25rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.dash-card__subtitle {
+    margin: 0 0 0.85rem;
+    color: var(--dash-muted);
+    font-size: 0.82rem;
+}
+
+.dash-chart {
+    width: 100%;
+    height: 320px;
+}
+
+.dash-chart--tall {
+    height: 380px;
+}
+
+.dash-footer {
+    margin-top: 2rem;
+    color: var(--dash-muted);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .dash-card--span-4,
+    .dash-card--span-6 {
+        grid-column: span 12;
+    }
+}

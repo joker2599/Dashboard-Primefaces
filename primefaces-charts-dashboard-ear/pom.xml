@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.demo</groupId>
+        <artifactId>primefaces-charts-dashboard</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>primefaces-charts-dashboard-ear</artifactId>
+    <packaging>ear</packaging>
+    <name>PrimeFaces Charts Dashboard EAR</name>
+    <description>EAR que empaqueta el módulo EJB y el WAR para Payara 6</description>
+
+    <dependencies>
+        <!-- type jar: NetBeans/Maven resuelven desde .m2 sin pedir type=ejb a Central -->
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>primefaces-charts-dashboard-ejb</artifactId>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>primefaces-charts-dashboard-web</artifactId>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>primefaces-charts-dashboard</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <version>10</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <!-- application.xml propio: marca el jar como módulo EJB -->
+                    <generateApplicationXml>false</generateApplicationXml>
+                    <displayName>PrimeFaces Charts Dashboard</displayName>
+                    <modules>
+                        <!-- bundleDir=/ evita que defaultLibBundleDir lo meta en lib/ -->
+                        <jarModule>
+                            <groupId>com.demo</groupId>
+                            <artifactId>primefaces-charts-dashboard-ejb</artifactId>
+                            <bundleDir>/</bundleDir>
+                            <bundleFileName>primefaces-charts-dashboard-ejb.jar</bundleFileName>
+                        </jarModule>
+                        <webModule>
+                            <groupId>com.demo</groupId>
+                            <artifactId>primefaces-charts-dashboard-web</artifactId>
+                            <contextRoot>/primefaces-charts-dashboard</contextRoot>
+                            <bundleFileName>primefaces-charts-dashboard-web.war</bundleFileName>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

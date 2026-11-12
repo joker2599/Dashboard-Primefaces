@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.demo</groupId>
+        <artifactId>primefaces-charts-dashboard</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>primefaces-charts-dashboard-ejb</artifactId>
+    <!--
+      packaging jar (no ejb): NetBeans 22 al Run del EAR resuelve type=ejb contra
+      repos remotos. Un jar con @Stateless + ejb-jar.xml es válido en Payara 6
+      y el ear-maven-plugin lo declara como ejbModule.
+    -->
+    <packaging>jar</packaging>
+    <name>PrimeFaces Charts Dashboard EJB</name>
+    <description>Capa EJB con datos de demostración para las gráficas</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>primefaces-charts-dashboard-ejb</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
