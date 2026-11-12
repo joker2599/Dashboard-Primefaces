@@ -1,0 +1,27 @@
+# PrimeFaces Charts Dashboard — Payara 6 en Docker
+# Uso:
+#   docker compose build
+#   docker compose up -d
+# URL: http://localhost:8080/primefaces-charts-dashboard/
+
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dashboard-primefaces:1.0.0
+    container_name: dashboard-primefaces
+    ports:
+      - "8080:8080"   # aplicación HTTP
+      - "4848:4848"   # consola admin Payara (admin / admin por defecto en imagen)
+    environment:
+      # Opcional: JVM / Payara (ver docs de la imagen oficial)
+      TZ: America/Bogota
+    healthcheck:
+      # La imagen Payara no trae curl; comprobamos que el puerto HTTP responda.
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/127.0.0.1/8080'"]
+      interval: 20s
+      timeout: 5s
+      retries: 15
+      start_period: 120s
+    restart: unless-stopped

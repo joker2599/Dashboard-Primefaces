@@ -1,0 +1,36 @@
+# Maven / build outputs
+**/target/
+
+# Git / IDE
+.git/
+.gitignore
+.idea/
+.vscode/
+.nbproject/
+**/.netbeans/
+**/nbproject/private/
+**/*.iml
+**/*.ipr
+**/*.iws
+
+# OS / temp
+**/.DS_Store
+**/Thumbs.db
+**/*.tmp
+**/*.log
+**/hs_err_pid*
+
+# Docs / media locales (no necesarios para el build del EAR)
+AgentStores/
+.cursor/
+media/
+**/*.png
+**/*.jpg
+**/*.gif
+**/*.mp4
+
+# Carpeta src suelta en la raíz del parent (no es módulo Maven)
+/src/
+
+# Backups locales
+dashboard-backup-*/
